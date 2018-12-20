@@ -1,0 +1,42 @@
+{
+  "name": "@prosellen/posthtml-imgix-sign-url",
+  "version": "0.1.0",
+  "description": "A PostHTML plugin to automatically sign imgix-URLs ",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prosellen/posthtml-imgix-sign-url.git"
+  },
+  "keywords": [
+    "posthtml",
+    "plugin",
+    "imgix",
+    "sign",
+    "url",
+    "security"
+  ],
+  "author": "Peter Rosellen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prosellen/posthtml-imgix-sign-url/issues"
+  },
+  "homepage": "https://github.com/prosellen/posthtml-imgix-sign-url#readme",
+  "dependencies": {
+    "posthtml": "0.11.3",
+    "@prosellen/imgix-js-sign-url": "0.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.2.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "regenerator-runtime": "0.13.1"
+  }
+}
