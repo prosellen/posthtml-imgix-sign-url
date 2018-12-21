@@ -1,0 +1,4 @@
+{
+    "testPathIgnorePatterns": ["src"],
+    "verbose": true
+  }
