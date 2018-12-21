@@ -1,7 +1,7 @@
 'use strict';
 
 import posthtml from 'posthtml';
-import plugin from '../src';
+import plugin from '../lib';
 
 describe('basics', ()=> {
     const transform = (options) => {
@@ -46,7 +46,7 @@ describe('basics', ()=> {
         `;
         
         posthtml()
-            .use(plugin({ imgixDomain: 'pradd2.imgix.net', secureURLToken: 't0k3n'}))
+            .use(plugin({ imgixDomain: 'foobar.imgix.net', secureURLToken: 't0k3n'}))
             .process(htmlIn, { closingSingleTag: 'slash' })
             .then((result) => {
                 expect(result.html).toMatch(htmlOut);
