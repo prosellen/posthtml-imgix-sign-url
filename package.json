@@ -7,8 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
+    "build": "babel src --out-dir lib",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm test && npm run build"
   },
   "repository": {
     "type": "git",
