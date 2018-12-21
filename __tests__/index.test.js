@@ -1,7 +1,7 @@
 'use strict';
 
 import posthtml from 'posthtml';
-import plugin from '../lib';
+import plugin from '../src';
 
 describe('basics', ()=> {
     const transform = (options) => {
@@ -78,7 +78,7 @@ describe('basics', ()=> {
                     <picture>
                         <source media="(min-width: 992px)" srcset="https://foobar.imgix.net/foo/bar/bar.png?w=20&h=40&dpr=2&s=ad1a1aac58a311cf925ad9cf6975d1e8 2x, https://foobar.imgix.net/foo/bar.png?w=20&h=40&dpr=1&s=fed77723b746f3cc493697ab93802298" />
                         <source media="(min-width: 720px)" srcset="https://foobar.imgix.net/foo/bar/bar.png?w=10&h=20&dpr=2&s=5ec6fa0eee82411fc1bf2871e4949607 2x, https://foobar.imgix.net/foo/bar.png?w=10&h=20&dpr=1&s=8fd3ee20299089c93787fa205f7d2f6b" />
-                        <img src="https://foobar.imgix.net/foo/bar/baz?w=10&h=20s=3add97f5a441e1ebfbd4fda73ca9bea5" />
+                        <img src="https://foobar.imgix.net/foo/bar/baz?w=10&h=20&s=3add97f5a441e1ebfbd4fda73ca9bea5" />
                     </picture>
                 </body>
             </html>
