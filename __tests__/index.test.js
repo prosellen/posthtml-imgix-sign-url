@@ -57,7 +57,7 @@ describe('basics', ()=> {
             });
     });
 
-    it('consumes imgix domains in <source />-Tags', async (done) => {
+    it('consumes imgix domains in <picture />-Tags', async (done) => {
         const htmlIn = `
             <html>
                 <header></header>
@@ -86,6 +86,45 @@ describe('basics', ()=> {
         
         posthtml()
             .use(plugin({ imgixDomain: 'foobar.imgix.net', secureURLToken: 't0k3n'}))
+            .process(htmlIn, { closingSingleTag: 'slash' })
+            .then((result) => {
+                expect(result.html).toMatch(htmlOut);
+                done();
+            })
+            .catch((err) => {
+                done(err);
+            });
+    });
+
+    it('consumes imgix domains in <picture />-Tags with custom attributes', async (done) => {
+        const htmlIn = `
+            <html>
+                <header></header>
+                <body>
+                    <picture>
+                        <source media="(min-width: 992px)" data-srcset="https://foobar.imgix.net/foo/bar/bar.png?w=20&h=40&dpr=2 2x, https://foobar.imgix.net/foo/bar.png?w=20&h=40&dpr=1" />
+                        <source media="(min-width: 720px)" data-srcset="https://foobar.imgix.net/foo/bar/bar.png?w=10&h=20&dpr=2 2x, https://foobar.imgix.net/foo/bar.png?w=10&h=20&dpr=1" />
+                        <img data-src="https://foobar.imgix.net/foo/bar/baz?w=10&h=20" />
+                    </picture>
+                </body>
+            </html>
+        `;
+
+        const htmlOut = `
+            <html>
+                <header></header>
+                <body>
+                    <picture>
+                        <source media="(min-width: 992px)" data-srcset="https://foobar.imgix.net/foo/bar/bar.png?w=20&h=40&dpr=2&s=ad1a1aac58a311cf925ad9cf6975d1e8 2x, https://foobar.imgix.net/foo/bar.png?w=20&h=40&dpr=1&s=fed77723b746f3cc493697ab93802298" />
+                        <source media="(min-width: 720px)" data-srcset="https://foobar.imgix.net/foo/bar/bar.png?w=10&h=20&dpr=2&s=5ec6fa0eee82411fc1bf2871e4949607 2x, https://foobar.imgix.net/foo/bar.png?w=10&h=20&dpr=1&s=8fd3ee20299089c93787fa205f7d2f6b" />
+                        <img data-src="https://foobar.imgix.net/foo/bar/baz?w=10&h=20&s=3add97f5a441e1ebfbd4fda73ca9bea5" />
+                    </picture>
+                </body>
+            </html>
+        `;
+        
+        posthtml()
+            .use(plugin({ imgixDomain: 'foobar.imgix.net', secureURLToken: 't0k3n', attributes: ['data-src', 'data-srcset'] }))
             .process(htmlIn, { closingSingleTag: 'slash' })
             .then((result) => {
                 expect(result.html).toMatch(htmlOut);
