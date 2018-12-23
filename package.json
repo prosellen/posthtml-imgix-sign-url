@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
-    "watch": "concurrently \"npm run build:watch\" \"npm run test:watch\" --names \"💻,📦\" --prefix name",
+    "watch": "concurrently \"npm run build:watch\" \"npm run test:watch\" --names \"🔨,👓\" --prefix name",
     "build:watch": "babel src --watch --out-dir lib",
     "test": "jest",
     "test:watch": "jest --watch --config jest.config.json",
@@ -34,6 +34,9 @@
     "url": "https://github.com/prosellen/posthtml-imgix-sign-url/issues"
   },
   "homepage": "https://github.com/prosellen/posthtml-imgix-sign-url#readme",
+  "files": [
+    "/lib"
+  ],
   "dependencies": {
     "posthtml": "0.11.3",
     "@prosellen/imgix-js-sign-url": "0.1.0"
