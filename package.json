@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "posthtml": "0.11.3",
-    "@prosellen/imgix-js-sign-url": "0.1.0"
+    "@prosellen/imgix-js-sign-url": "0.2.0"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
