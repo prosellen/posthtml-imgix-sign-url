@@ -1,6 +1,6 @@
 {
   "name": "@prosellen/posthtml-imgix-sign-url",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A PostHTML plugin to automatically sign imgix-URLs ",
   "main": "lib/index.js",
   "directories": {
