@@ -22,7 +22,7 @@ describe('basics', ()=> {
         }).toThrow();        
     }) 
     
-    it('consumes imgix domains in <img />-Tags', async (done) => {
+    it('consumes imgix domains in <img />-Tags', (done) => {
         const htmlIn = `
             <html>
                 <header></header>
@@ -57,7 +57,7 @@ describe('basics', ()=> {
             });
     });
 
-    it('consumes imgix domains in <picture />-Tags', async (done) => {
+    it('consumes imgix domains in <picture />-Tags', (done) => {
         const htmlIn = `
             <html>
                 <header></header>
@@ -96,7 +96,7 @@ describe('basics', ()=> {
             });
     });
 
-    it('consumes imgix domains in <picture />-Tags with custom attributes', async (done) => {
+    it('consumes imgix domains in <picture />-Tags with custom attributes', (done) => {
         const htmlIn = `
             <html>
                 <header></header>
@@ -135,7 +135,7 @@ describe('basics', ()=> {
             });
     });
 
-    it('leaves non-imgix domains alone', async (done) => {
+    it('leaves non-imgix domains alone', (done) => {
         const htmlIn = '<img src="https://example.com/foo/bar/bar.png" />';
         const htmlOut = '<img src="https://example.com/foo/bar/bar.png" />';
 
@@ -143,7 +143,6 @@ describe('basics', ()=> {
             .use(plugin({ imgixDomain: 'foobar.imgix.net', secureURLToken: 't0k3n'}))
             .process(htmlIn, { closingSingleTag: 'slash' })
             .then((result) => {
-                console.log(result.html);
                 expect(result.html).toMatch(htmlOut);
                 done();
             })
